@@ -1,0 +1,1 @@
+export default function gammaTestimonials() { return <section className='py-20 border-b border-zinc-100'> <h2 className='text-center uppercase font-bold text-zinc-400'>gamma Testimonials Section Content</h2> </section>; }
