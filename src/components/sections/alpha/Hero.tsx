@@ -2,7 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
-const CORE_PILLARS = ["Automation", "Hardware", "Intelligence", "Connectivity"];
+const CORE_PILLARS = ["E-Commerce Solutions",
+  "Web Development",
+  "No Code Development",
+  "Digital Marketing",
+  "AI Automation",];
 
 export default function HeroAlpha() {
   const [mounted, setMounted] = useState(false);
@@ -50,9 +54,9 @@ export default function HeroAlpha() {
       {/* 1. WATERMARK - Hidden on small screens for performance */}
       <motion.div 
         style={{ x: springX }}
-        className="absolute -bottom-10 left-0 whitespace-nowrap select-none pointer-events-none opacity-[0.03] md:opacity-[0.04] font-black text-[30vw] md:text-[22vw] uppercase leading-none text-zinc-900 z-0"
+        className="absolute -bottom-10 left-0 whitespace-nowrap select-none pointer-events-none opacity-[0.03] md:opacity-[0.04] font-black text-[30vw] md:text-[22vw] uppercase leading-none text-[#4c4c4c] z-0"
       >
-        ENGINEERING • SYSTEMS • FUTURE •
+        E-Commerce • Web • App Development
       </motion.div>
 
       {/* 2. SCANNING LINE */}
@@ -77,8 +81,8 @@ export default function HeroAlpha() {
             className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6"
           >
             <span className="w-8 md:w-12 h-[1px] bg-orange-500" />
-            <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-zinc-400">
-              System Architecture v1.0
+            <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-[#383838]">
+              Enterprise IT & Product Engineering
             </span>
           </motion.div>
 
@@ -90,7 +94,7 @@ export default function HeroAlpha() {
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black uppercase leading-[0.9] md:leading-[0.8] tracking-tighter text-zinc-900"
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-zinc-500">
-              Sync's
+              Digital
             </span>
           </motion.h1>
 
@@ -115,7 +119,7 @@ export default function HeroAlpha() {
             className="p-6 md:p-8 bg-white/80 backdrop-blur-sm border border-zinc-100 rounded-2xl shadow-xl shadow-orange-500/5"
           >
             <p className="text-3xl md:text-4xl font-black text-orange-600 italic mb-1">99.9%</p>
-            <p className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-zinc-400">Reliability Verified</p>
+            <p className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-[#383838]">Trusted Authority</p>
           </motion.div>
           
           <motion.div
@@ -123,7 +127,7 @@ export default function HeroAlpha() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9 }}
           >
-            <button className="group relative w-full py-5 md:py-6 bg-zinc-900 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] rounded-xl overflow-hidden shadow-2xl transition-all active:scale-95">
+            <button className="group relative w-full py-5 md:py-6 bg-[#383838] text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] rounded-xl overflow-hidden shadow-2xl transition-all active:scale-95">
               <span className="relative z-10">Launch Solutions</span>
               <div className="absolute inset-0 bg-orange-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
             </button>
@@ -134,7 +138,7 @@ export default function HeroAlpha() {
       {/* 5. FOOTER DECOR - Hidden on small mobile */}
       <div className="absolute bottom-10 left-6 md:left-10 hidden sm:flex items-center gap-4">
         <div className="h-[1px] w-12 md:w-20 bg-zinc-200" />
-        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-zinc-300">
+        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-[#383838]">
           Scroll to Explore
         </span>
       </div>

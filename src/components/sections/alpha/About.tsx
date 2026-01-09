@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutAlpha() {
   const [index, setIndex] = useState(0);
-  const images = ["/AboutViweb1.png", "/AboutViweb2.png"];
+  const images = ["../assets/images/about-us-2.webp", "../assets/images/about-us-img.png"];
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function AboutAlpha() {
       {/* 1. SIDEBAR LABEL - Hidden on smaller screens to maximize content space */}
       <div className="absolute left-4 md:left-8 top-40 hidden xl:flex flex-col items-center gap-16">
         <span className="text-[9px] font-black uppercase tracking-[1em] rotate-90 origin-left text-zinc-300">
-          SYSTEMS_CORE
+         DIGITAL_CORE
         </span>
         <div className="w-[1px] h-40 bg-zinc-100" />
       </div>
@@ -36,36 +36,46 @@ export default function AboutAlpha() {
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-[2px] bg-orange-500" />
                   <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-orange-600">
-                    Precision Engineering
+                    Scalable IT Solutions
                   </p>
                 </div>
                 {/* Fluid Typography: Scales from text-5xl to text-8xl */}
                 <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 leading-[0.9] md:leading-[0.85] uppercase">
-                  Hardware <br /> 
-                  <span className="text-zinc-200">Sync.</span>
+                  Digital  <br /> 
+                  <span className="text-zinc-200">Systems.</span>
                 </h2>
               </div>
 
               <div className="max-w-xl space-y-6">
                 <p className="text-base md:text-lg font-bold text-zinc-900 leading-snug tracking-tight">
-                  We engineer the deterministic link between raw physical NI hardware and high-performance intelligence.
+We design and engineer scalable digital platforms that power e-commerce,
+web applications, and high-performance business systems.
                 </p>
                 <p className="text-xs md:text-sm text-zinc-500 leading-relaxed font-medium">
-                  From LabVIEW-based automation to FPGA signal processing, VI WebSync ensures mission-critical safety through validated engineering for Aerospace, Defense, and Industrial sectors.
-                </p>
+From custom e-commerce solutions to enterprise-grade web and mobile applications,
+we build secure, high-performance systems designed for growth, reliability,
+and long-term business impact.                </p>
               </div>
 
               {/* Technical Spec List - Responsive grid columns */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 border-t border-zinc-100 pt-8 md:pt-10">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[8px] md:text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-widest">Protocol</span>
-                  <p className="text-[11px] md:text-xs font-black text-zinc-900 uppercase">Mission Critical V&V</p>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-[8px] md:text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-widest">Platform</span>
-                  <p className="text-[11px] md:text-xs font-black text-zinc-900 uppercase">NI PXI / FPGA / RT</p>
-                </div>
-              </div>
+             <div className="flex flex-col gap-1">
+  <span className="text-[8px] md:text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-widest">
+    Technology Stack
+  </span>
+  <p className="text-[11px] md:text-xs font-black text-zinc-900 uppercase">
+    React • Next.js • APIs • Shopify • Digital Marketing Tools
+  </p>
+</div>
+
+<div className="flex flex-col gap-1">
+  <span className="text-[8px] md:text-[9px] font-mono font-bold text-zinc-400 uppercase tracking-widest">
+    Delivery Model
+  </span>
+  <p className="text-[11px] md:text-xs font-black text-zinc-900 uppercase">
+    Scalable • Secure • Performance-Driven
+  </p>
+</div>
+
             </div>
           </div>
 
@@ -91,17 +101,17 @@ export default function AboutAlpha() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8 }}
                     className="w-full h-full object-cover"
-                    alt="NI Engineering Environment"
+                    alt="E-commerce and web application system architecture"
                   />
                 </AnimatePresence>
               </div>
 
               {/* Discrete Tag */}
-              <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-2 md:px-3 py-1 bg-white border border-zinc-200 z-30">
+              {/* <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-2 md:px-3 py-1 bg-white border border-zinc-200 z-30">
                 <span className="text-[7px] md:text-[8px] font-mono font-black text-zinc-900 tracking-widest">
                   SYS_REF_0{index + 1}
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Decorative Grid - Hidden on smallest phones to keep it clean */}

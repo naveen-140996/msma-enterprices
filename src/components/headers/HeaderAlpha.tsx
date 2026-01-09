@@ -9,6 +9,7 @@ import {
   faLaptopCode, faRobot,
   faArrowRight, faMicrochip as faPcb
 } from '@fortawesome/free-solid-svg-icons';
+import Logo from '../../../public/assets/logo/msma-logo.png'
 
 export default function HeaderAlpha() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -112,7 +113,7 @@ const softwareServices = [
         {/* LOGO: Left End & Big Size */}
         <Link href="/" className="relative z-[110] flex items-center shrink-0">
          <Image 
-  src="/logo1.svg" 
+  src={Logo} 
   alt="VIWEB SYNC" 
   // Use the actual internal dimensions of your SVG here
   width={600} 
@@ -125,7 +126,7 @@ const softwareServices = [
     md:h-28 
     
     /* 3. Desktop: Bold Aerospace presence */
-    lg:h-36 
+     lg:w-[200px]
     
     /* 4. Extra: Prevention */
     object-contain object-left flex-none
@@ -140,28 +141,41 @@ const softwareServices = [
                           bg-gradient-to-br from-white/80 via-orange-50/40 to-orange-500/20 
                           shadow-[0_10px_40px_rgba(234,88,12,0.2)]">
             
-            <button onClick={() => setActiveMenu(activeMenu === 'ind' ? null : 'ind')} className="px-5 py-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
-              Industries <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'ind' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
+            {/* <button onClick={() => setActiveMenu(activeMenu === 'ind' ? null : 'ind')} className="px-5 py-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              About us <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'ind' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
             </button>
 
             <button onClick={() => setActiveMenu(activeMenu === 'prod' ? null : 'prod')} className="px-5 py-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
-              Products <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'prod' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
+               <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'prod' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
             </button>
 
             <button onClick={() => setActiveMenu(activeMenu === 'soft' ? null : 'soft')} className="px-5 py-2 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
               Software & AI <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'soft' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
-            </button>
+            </button> */}
 
-            <Link href="/about" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
-              About
+            <Link href="/" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              Home
+            </Link>
+            <Link href="/services" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              Services
+            </Link>
+            <Link href="/portfolio" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              Portfolio
+            </Link>
+           
+               <Link href="/testimonials" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              Testimonials
             </Link>
 
             <Link href="/blogs" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
               Blog
             </Link>
+             <Link href="/about" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+              About us
+            </Link>
 
             {/* DROPDOWN CONTAINER */}
-            <div className={`absolute top-[calc(100%+25px)] left-1/2 -translate-x-1/2 w-[1000px] transition-all duration-300 ${activeMenu ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'}`}>
+            {/* <div className={`absolute top-[calc(100%+25px)] left-1/2 -translate-x-1/2 w-[1000px] transition-all duration-300 ${activeMenu ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'}`}>
               {activeMenu === 'ind' && (
                 <div className="bg-white border border-zinc-200 shadow-[0_40px_80px_rgba(0,0,0,0.15)] rounded-[2rem] p-10 grid grid-cols-3 gap-x-8 gap-y-10 text-left">
                   {industryData.map((ind, i) => (
@@ -211,13 +225,13 @@ const softwareServices = [
   </div>
 )}
 
-            </div>
+            </div> */}
           </div>
         </nav>
 
         {/* MOBILE CONTROLS */}
         <div className="flex items-center gap-4 relative z-[110]">
-          <Link href="/contact" className="hidden sm:flex px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] bg-orange-600 text-white shadow-xl hover:scale-105 transition-all items-center gap-3">
+          <Link href="/contact" className="hidden sm:flex px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] bg-[#4c4c4c] text-white shadow-xl hover:scale-105 transition-all items-center gap-3">
             Ready to Sync <FontAwesomeIcon icon={faArrowRight} />
           </Link>
 
@@ -233,11 +247,12 @@ const softwareServices = [
         {/* MOBILE DRAWER MENU */}
         <div className={`fixed inset-0 bg-white z-[105] flex flex-col p-8 transition-transform duration-500 ease-in-out xl:hidden ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
            <div className="mt-24 flex flex-col gap-6">
-              <Link href="/industries" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Industries</Link>
-              <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Products</Link>
-              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">About</Link>
+              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Home</Link>
+              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Services</Link>
+              <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Portfolio</Link>
+              <Link href="/Testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Testimonials</Link>
               <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Blog</Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter text-orange-600">Contact</Link>
+              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter text-orange-600">About</Link>
            </div>
         </div>
 

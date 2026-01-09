@@ -5,29 +5,30 @@ import { motion } from 'framer-motion';
 const steps = [
   {
     id: "01",
-    title: "Discovery & Analysis",
-    desc: "We deep-dive into your hardware constraints, signal requirements, and business logic to define the scope.",
-    tags: ["Feasibility Study", "Tech Stack Selection"]
+    title: "Discovery & Product Analysis",
+    desc: "We analyze your business goals, target users, and technical requirements to define a clear digital roadmap.",
+    tags: ["Requirement Analysis", "Market Research"]
   },
   {
     id: "02",
-    title: "Architecture Design",
-    desc: "Designing the bridge between physical and digital. From PCB schematics to LabVIEW Actor Frameworks.",
-    tags: ["System Modeling", "Safety Logic"]
+    title: "System & UX Architecture",
+    desc: "Designing scalable system architecture and user experiences that balance performance, usability, and growth.",
+    tags: ["System Design", "UX Strategy"]
   },
   {
     id: "03",
-    title: "Rapid Integration",
-    desc: "Deployment of custom hardware and software. We build the dashboards and the control loops in parallel.",
-    tags: ["HIL Testing", "UI/UX Deployment"]
+    title: "Development & Integration",
+    desc: "Building e-commerce platforms, web and mobile applications, and integrating APIs, payments, and cloud services.",
+    tags: ["Web & App Dev", "API Integration"]
   },
   {
     id: "04",
-    title: "AI Optimization",
-    desc: "Applying machine learning agents to your data stream to predict failures and automate growth.",
-    tags: ["Predictive Maint", "Autonomous Workflows"]
+    title: "Optimization & Growth",
+    desc: "Optimizing performance, applying automation, and scaling through analytics, AI workflows, and digital marketing.",
+    tags: ["AI Automation", "Digital Marketing"]
   }
 ];
+
 
 export default function ProcessAlpha() {
   return (
@@ -36,9 +37,9 @@ export default function ProcessAlpha() {
         
         {/* Section Title */}
         <div className="mb-20">
-          <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 mb-4">Execution Framework</h3>
+          <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 mb-4">  Delivery Framework</h3>
           <h2 className="text-5xl md:text-7xl font-black text-zinc-900 uppercase tracking-tighter">
-            From Lab to <span className="italic text-zinc-200">Scale.</span>
+            From Idea to <span className="italic text-zinc-200">Growth.</span>
           </h2>
         </div>
 
@@ -74,11 +75,14 @@ export default function ProcessAlpha() {
 
         {/* Bottom CTA for the Process */}
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-900 p-8 bg-zinc-900 text-white">
-            <p className="text-sm font-medium tracking-wide uppercase">
-              Ready to start the <span className="text-orange-500 font-black tracking-tighter">Integration Phase?</span>
+           <p className="text-sm font-medium tracking-wide uppercase">
+              Ready to launch your <span className="text-orange-500 font-black tracking-tighter">
+                Digital Product?
+              </span>
             </p>
+
             <button className="px-8 py-3 bg-orange-600 hover:bg-white hover:text-zinc-900 text-white font-black uppercase text-[10px] tracking-widest transition-all">
-              Consult an Engineer
+              Start a Consultation
             </button>
         </div>
       </div>
