@@ -48,7 +48,7 @@ export default function HeroAlpha() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen w-full flex flex-col justify-center items-center bg-[#fcfcfc] overflow-hidden pt-24 pb-12 md:pt-20 md:pb-0"
+      className="relative min-h-screen w-full flex flex-col justify-center items-center bg-[#fcfcfc] overflow-hidden pt-10 pb-12 md:pt-20 md:pb-0"
     >
       
       {/* 1. WATERMARK - Hidden on small screens for performance */}

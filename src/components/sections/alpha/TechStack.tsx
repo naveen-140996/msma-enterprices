@@ -22,7 +22,7 @@ const tools = [
 
 export default function TechStackPulse() {
   return (
-    <section className="py-32 md:py-40 bg-white relative overflow-hidden">
+    <section className="py-10 md:py-40 bg-white relative overflow-hidden">
       {/* Minimal background depth */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-orange-50/20 to-white" />

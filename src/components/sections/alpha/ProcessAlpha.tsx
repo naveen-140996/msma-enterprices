@@ -32,11 +32,11 @@ const steps = [
 
 export default function ProcessAlpha() {
   return (
-    <section className="py-24 bg-white">
+    <section className="md:py-24 py-10  bg-white">
       <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
         
         {/* Section Title */}
-        <div className="mb-20">
+        <div className="md:mb-20 mb-10">
           <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 mb-4">  Delivery Framework</h3>
           <h2 className="text-5xl md:text-7xl font-black text-zinc-900 uppercase tracking-tighter">
             From Idea to <span className="italic text-zinc-200">Growth.</span>
@@ -63,7 +63,7 @@ export default function ProcessAlpha() {
 
                 <div className="flex flex-wrap gap-2">
                   {step.tags.map((tag) => (
-                    <span key={tag} className="text-[8px] font-bold py-1 px-2 bg-zinc-100 text-zinc-400 uppercase tracking-widest">
+                    <span key={tag} className="text-[8px] font-bold py-1 px-2 bg-zinc-100 text-[#383838] uppercase tracking-widest">
                       {tag}
                     </span>
                   ))}

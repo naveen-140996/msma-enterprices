@@ -10,9 +10,12 @@ import {
   faArrowRight, faMicrochip as faPcb
 } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../../public/assets/logo/msma-logo.png'
+import { usePathname } from "next/navigation";
+
 
 export default function HeaderAlpha() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Added for Mobile
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
@@ -42,53 +45,60 @@ export default function HeaderAlpha() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const industryData = [
-    { title: "Aerospace & Defence", icon: faRocket, subs: ["Missile & Ballistic Checkout", "Rocket Motor Test Systems", "Radar & RF Systems", "Satellite & SATCOM", "Simulation & Emulation", "Data Acquisition & Control"] },
-    { title: "Oil & Gas", icon: faDroplet, subs: ["pipeline-monitoring-control",
-"drilling-exploration-systems",
-"refinery-automation",
-"condition-monitoring-systems"
-] },
-    { title: "Chemical Industry", icon: faVial, subs: ["process-control-automation",
-"safety-compliance-testing",
-"lab-instrumentation-automation",
-"pilot-plant-simulation-validation"
-] },
-    { title: "Power & Energy", icon: faBolt, subs: ["power-generation-systems",
-"smart-grid-distribution-systems",
-"renewable-energy-systems"
-] },
-    { title: "Medical & Health", icon: faStethoscope, subs: ["medical-device-development-testing",
-"biomedical-signal-processing",
-"medical-imaging-analysis",
-"patient-monitoring-systems",
-"hospital-lab-automation",
-"rehabilitation-prosthetics-systems",
-"medical-research-systems"] },
-    { title: "Industry 4.0", icon: faIndustry, subs: ["smart-manufacturing",
-"digital-twin-systems",
-"industrial-iot",
-"predictive-maintenance-systems",
-"robotics-cobot-systems",
-"smart-energy-systems",
-"digital-quality-inspection",
-"supply-chain-automation",
-"smart-energy-systems-"
-] },
-  ];
+  const navLinkClass = (path: string) =>
+  `px-5 py-2 text-[10px] font-black uppercase tracking-widest transition-colors
+   ${pathname === path
+     ? "text-orange-600"
+     : "text-black hover:text-orange-700"}`;
 
- const productsData = [
-  { name: "Automated Test Equipment (ATE)", desc: "High-Speed Functional Testing" },
-  { name: "SAR Environment Simulator", desc: "RF Exposure Simulation" },
-  { name: "Actuator Test Systems", desc: "Precision Motion Validation" },
-  { name: "Antenna & RCS Measurement Suite", desc: "Radar Signature Analysis" },
-  { name: "Missile Checkout Systems", desc: "Pre-Launch Validation Suite" },
-  { name: "Acoustic Emission Acquisition & Analysis System", desc: "Structural Health Monitoring" },
-  { name: "Cable & Harness Testers", desc: "Continuity & Isolation Testing" },
-  { name: "Multi-Emitter Scenario Simulator", desc: "Complex RF Simulation" },
-  { name: "Radar Waveform Generator", desc: "Custom Waveform Synthesis" },
-  { name: "Pyro Firing Control & Measurement Suite", desc: "Safe Pyro Activation System" },
-];
+
+//   const industryData = [
+//     { title: "Aerospace & Defence", icon: faRocket, subs: ["Missile & Ballistic Checkout", "Rocket Motor Test Systems", "Radar & RF Systems", "Satellite & SATCOM", "Simulation & Emulation", "Data Acquisition & Control"] },
+//     { title: "Oil & Gas", icon: faDroplet, subs: ["pipeline-monitoring-control",
+// "drilling-exploration-systems",
+// "refinery-automation",
+// "condition-monitoring-systems"
+// ] },
+//     { title: "Chemical Industry", icon: faVial, subs: ["process-control-automation",
+// "safety-compliance-testing",
+// "lab-instrumentation-automation",
+// "pilot-plant-simulation-validation"
+// ] },
+//     { title: "Power & Energy", icon: faBolt, subs: ["power-generation-systems",
+// "smart-grid-distribution-systems",
+// "renewable-energy-systems"
+// ] },
+//     { title: "Medical & Health", icon: faStethoscope, subs: ["medical-device-development-testing",
+// "biomedical-signal-processing",
+// "medical-imaging-analysis",
+// "patient-monitoring-systems",
+// "hospital-lab-automation",
+// "rehabilitation-prosthetics-systems",
+// "medical-research-systems"] },
+//     { title: "Industry 4.0", icon: faIndustry, subs: ["smart-manufacturing",
+// "digital-twin-systems",
+// "industrial-iot",
+// "predictive-maintenance-systems",
+// "robotics-cobot-systems",
+// "smart-energy-systems",
+// "digital-quality-inspection",
+// "supply-chain-automation",
+// "smart-energy-systems-"
+// ] },
+//   ];
+
+//  const productsData = [
+//   { name: "Automated Test Equipment (ATE)", desc: "High-Speed Functional Testing" },
+//   { name: "SAR Environment Simulator", desc: "RF Exposure Simulation" },
+//   { name: "Actuator Test Systems", desc: "Precision Motion Validation" },
+//   { name: "Antenna & RCS Measurement Suite", desc: "Radar Signature Analysis" },
+//   { name: "Missile Checkout Systems", desc: "Pre-Launch Validation Suite" },
+//   { name: "Acoustic Emission Acquisition & Analysis System", desc: "Structural Health Monitoring" },
+//   { name: "Cable & Harness Testers", desc: "Continuity & Isolation Testing" },
+//   { name: "Multi-Emitter Scenario Simulator", desc: "Complex RF Simulation" },
+//   { name: "Radar Waveform Generator", desc: "Custom Waveform Synthesis" },
+//   { name: "Pyro Firing Control & Measurement Suite", desc: "Safe Pyro Activation System" },
+// ];
 
 const softwareServices = [
   " Web Applications",
@@ -153,24 +163,24 @@ const softwareServices = [
               Software & AI <FontAwesomeIcon icon={faChevronDown} className={`text-[8px] transition-transform ${activeMenu === 'soft' ? 'rotate-180 text-orange-600' : 'opacity-40'}`} />
             </button> */}
 
-            <Link href="/" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+            <Link href="/" className={navLinkClass("/")}>
               Home
             </Link>
-            <Link href="/services" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+            <Link href="/services" className={navLinkClass("/services")}>
               Services
             </Link>
-            <Link href="/portfolio" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+            <Link href="/portfolio" className={navLinkClass("/portfolio")}>
               Portfolio
             </Link>
            
-               <Link href="/testimonials" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+               <Link href="/testimonials" className={navLinkClass("/testimonials")}>
               Testimonials
             </Link>
 
-            <Link href="/blogs" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+            <Link href="/blogs" className={navLinkClass("/blogs")}>
               Blog
             </Link>
-             <Link href="/about" className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-black hover:text-orange-700 transition-colors">
+             <Link href="/about" className={navLinkClass("/about")}>
               About us
             </Link>
 
@@ -247,15 +257,14 @@ const softwareServices = [
         {/* MOBILE DRAWER MENU */}
         <div className={`fixed inset-0 bg-white z-[105] flex flex-col p-8 transition-transform duration-500 ease-in-out xl:hidden ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
            <div className="mt-24 flex flex-col gap-6">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Home</Link>
-              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Services</Link>
-              <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Portfolio</Link>
-              <Link href="/Testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Testimonials</Link>
-              <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter">Blog</Link>
-              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black uppercase tracking-tighter text-orange-600">About</Link>
+              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Home</Link>
+              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Services</Link>
+              <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Portfolio</Link>
+              <Link href="/Testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Testimonials</Link>
+              <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Blog</Link>
+              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">About</Link>
            </div>
         </div>
-
       </div>
     </header>
   );

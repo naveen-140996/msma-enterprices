@@ -16,7 +16,7 @@ export default function AboutAlpha() {
   if (!mounted) return null;
 
   return (
-    <section className="relative py-20 md:py-32 bg-white overflow-hidden border-t border-zinc-100">
+    <section className="relative py-10 md:py-32 bg-white overflow-hidden border-t border-zinc-100">
       
       {/* 1. SIDEBAR LABEL - Hidden on smaller screens to maximize content space */}
       <div className="absolute left-4 md:left-8 top-40 hidden xl:flex flex-col items-center gap-16">

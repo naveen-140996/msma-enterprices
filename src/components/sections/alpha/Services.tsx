@@ -121,7 +121,7 @@ export default function ServicesAlpha() {
         <div className="mb-20 max-w-4xl">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-[1px] bg-orange-500" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#383838]">
               What We Do
             </span>
           </div>
@@ -152,7 +152,7 @@ export default function ServicesAlpha() {
                 ${
                   active === i
                     ? "bg-orange-50 text-orange-600"
-                    : "bg-zinc-100 text-zinc-400 hover:text-zinc-700"
+                    : "bg-zinc-100 text-[#383838] hover:text-zinc-700"
                 }
               `}
             >
