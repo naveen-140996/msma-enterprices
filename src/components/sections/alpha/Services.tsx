@@ -154,7 +154,7 @@ const [isMobile, setIsMobile] = useState(false);
         {/* TABS SLIDER */}
 <div
   className="relative mb-14
-    overflow-x-auto md:overflow-hidden
+    overflow-x-auto overflow-y-hidden md:overflow-hidden
     scrollbar-hide"
   onMouseEnter={() => setPaused(true)}
   onMouseLeave={() => setPaused(false)}
