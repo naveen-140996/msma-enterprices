@@ -101,3 +101,7 @@ body {
   60% { transform: translate(-2px, -2px); }
   80% { transform: translate(-2px, 2px); }
 }
+
+.scrollbar-hide {
+  -webkit-overflow-scrolling: touch;
+}

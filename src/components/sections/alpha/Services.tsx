@@ -105,13 +105,26 @@ export default function ServicesAlpha() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
+const [isMobile, setIsMobile] = useState(false);
+
+
+ useEffect(() => {
+  // ⛔ Disable auto-rotation completely on mobile
+  if (paused || isMobile) return;
+
+  const timer = setInterval(() => {
+    setActive((prev) => (prev + 1) % services.length);
+  }, 6000);
+
+  return () => clearInterval(timer);
+}, [paused, isMobile]);
+
   useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % services.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [paused]);
+  const check = () => setIsMobile(window.innerWidth < 768);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
 
   return (
     <section className="relative md:py-28 py-10 bg-white overflow-hidden">
@@ -138,38 +151,55 @@ export default function ServicesAlpha() {
           </p>
         </div>
 
-        {/* TABS */}
-        <div
-          className="flex flex-wrap gap-3 mb-14"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          {services.map((service, i) => (
-            <button
-              key={service.id}
-              onClick={() => setActive(i)}
-              className={`relative px-5 py-3 rounded-[8px] text-[10px] font-black uppercase tracking-widest transition-all
-                ${
-                  active === i
-                    ? "bg-orange-50 text-orange-600"
-                    : "bg-zinc-100 text-[#383838] hover:text-zinc-700"
-                }
-              `}
-            >
-              {service.title}
+        {/* TABS SLIDER */}
+<div
+  className="relative mb-14
+    overflow-x-auto md:overflow-hidden
+    scrollbar-hide"
+  onMouseEnter={() => setPaused(true)}
+  onMouseLeave={() => setPaused(false)}
+>
+  <motion.div
+    className="flex gap-3 w-max md:w-max"
+    animate={{
+       x: isMobile ? 0 : `-${active * 180}px`,
+    }}
+    transition={{
+      type: "spring",
+      stiffness: 120,
+      damping: 20,
+    }}
+  >
+    {services.map((service, i) => (
+      <button
+        key={service.id}
+        onClick={() => setActive(i)}
+        className={`relative min-w-[170px] px-5 py-3 rounded-[8px]
+          text-[10px] font-black uppercase tracking-widest transition-all
+          ${
+            active === i
+              ? "bg-orange-50 text-orange-600 scale-105"
+              : "bg-zinc-100 text-[#383838] hover:text-zinc-700"
+          }
+        `}
+      >
+        {service.title}
 
-              {active === i && !paused && (
-                <motion.div
-                  key={active}
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 6, ease: "linear" }}
-                  className="absolute left-0 bottom-0 h-[2px] bg-orange-500 rounded-full"
-                />
-              )}
-            </button>
-          ))}
-        </div>
+        {/* PROGRESS BAR */}
+        {active === i && !paused && (
+          <motion.div
+            key={active}
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 6, ease: "linear" }}
+            className="hidden md:block absolute left-0 bottom-0 h-[2px] bg-orange-500 rounded-full"
+          />
+        )}
+      </button>
+    ))}
+  </motion.div>
+</div>
+
 
         {/* CONTENT */}
         <AnimatePresence mode="wait">
