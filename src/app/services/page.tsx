@@ -178,12 +178,8 @@ export default function ServicesPage() {
           transition={{ delay: 0.5 }}
           className="mt-10 flex justify-center gap-6"
         >
-          <button className="px-8 py-4 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:scale-105 transition">
-            Get Consultation
-          </button>
-
-          <button className="px-8 py-4 rounded-full border border-zinc-300 text-zinc-800 font-semibold hover:bg-zinc-100 transition">
-            View Services
+          <button className="px-8 py-4 rounded-full bg-[#4c4c4c] text-white font-semibold shadow-lg hover:scale-105 transition">
+            Book an Appoinment
           </button>
         </motion.div>
       </div>
