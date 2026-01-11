@@ -260,7 +260,7 @@ const softwareServices = [
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Home</Link>
               <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Services</Link>
               <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Portfolio</Link>
-              <Link href="/Testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Testimonials</Link>
+              <Link href="/testimonial" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Testimonials</Link>
               {/* <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Blog</Link> */}
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">About</Link>
            </div>
