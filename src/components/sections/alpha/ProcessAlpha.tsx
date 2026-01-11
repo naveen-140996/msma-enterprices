@@ -32,7 +32,7 @@ const steps = [
 
 export default function ProcessAlpha() {
   return (
-    <section className="md:py-24 py-10  bg-white">
+    <section className="md:py-14 py-10  bg-white">
       <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
         
         {/* Section Title */}

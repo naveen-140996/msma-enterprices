@@ -2,6 +2,9 @@ import { ThemeProvider } from "next-themes";
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // 1. VIEWPORT EXPORT
 export const viewport: Viewport = {

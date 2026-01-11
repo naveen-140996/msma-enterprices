@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
@@ -37,96 +38,141 @@ const testimonials = [
   },
 ];
 
+const INTERVAL = 6000;
+
 export default function TestimonialsAdvanced() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const userInteracted = useRef(false);
 
+  /* Detect screen */
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 8000);
-    return () => clearInterval(interval);
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
+
+  /* Auto cycle (desktop + mobile accordion) */
+  useEffect(() => {
+    if (userInteracted.current) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, INTERVAL);
+
+    return () => clearInterval(timer);
+  }, [activeIndex]);
+
+  /* Resume auto after user click */
+  const handleClick = (index: number) => {
+    userInteracted.current = true;
+    setActiveIndex(index);
+
+    setTimeout(() => {
+      userInteracted.current = false;
+    }, INTERVAL * 1.5);
+  };
 
   return (
     <section className="py-10 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-        {/* SECTION HEADER */}
+        {/* HEADER */}
         <div className="text-center mb-16 md:mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-zinc-900"
           >
             What Our Clients Say
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 md:mt-6 text-base md:text-lg text-zinc-600 max-w-3xl mx-auto"
-          >
+          <p className="mt-4 text-zinc-600 max-w-3xl mx-auto">
             Trusted by businesses across e-commerce, technology, and digital services.
-          </motion.p>
+          </p>
         </div>
 
-        {/* CONTENT GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+        {/* GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-          {/* CLIENT LIST */}
+          {/* ACCORDION LIST */}
           <div className="space-y-4 order-2 lg:order-1">
-            {testimonials.map((item, i) => (
-              <motion.button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                whileHover={{ x: 6 }}
-                className={`block w-full text-left p-5 rounded-2xl transition-all duration-500
-                  ${
-                    activeIndex === i
-                      ? "bg-orange-500 text-white shadow-xl"
-                      : "bg-zinc-50 hover:bg-zinc-100 text-zinc-800"
-                  }
-                `}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span
-                    className={`text-[10px] font-bold uppercase tracking-wider ${
-                      activeIndex === i ? "text-orange-100" : "text-orange-500"
-                    }`}
-                  >
-                    {item.id}
-                  </span>
-                  {activeIndex === i && (
-                    <motion.div
-                      layoutId="activeDot"
-                      className="w-2.5 h-2.5 bg-white rounded-full"
-                    />
-                  )}
-                </div>
-                <h4 className="font-bold text-base md:text-lg">
-                  {item.client}
-                </h4>
-                <p
-                  className={`text-xs md:text-sm mt-1 ${
-                    activeIndex === i ? "text-orange-100" : "text-zinc-500"
-                  }`}
+            {testimonials.map((item, i) => {
+              const isActive = activeIndex === i;
+
+              return (
+                <motion.div
+                  key={i}
+                  className={`rounded-2xl transition-all duration-500
+                    ${isActive ? "bg-orange-500 text-white shadow-xl" : "bg-zinc-50"}
+                  `}
                 >
-                  {item.role}
-                </p>
-              </motion.button>
-            ))}
+                  {/* HEADER */}
+                  <button
+                    onClick={() => handleClick(i)}
+                    className="w-full text-left p-5"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span
+                        className={`text-[10px] font-bold uppercase ${
+                          isActive ? "text-orange-100" : "text-orange-500"
+                        }`}
+                      >
+                        {item.id}
+                      </span>
+
+                      <motion.span
+                        animate={{ rotate: isActive ? 180 : 0 }}
+                        className="lg:hidden text-lg"
+                      >
+                        ▼
+                      </motion.span>
+                    </div>
+
+                    <h4 className="font-bold text-base md:text-lg">
+                      {item.client}
+                    </h4>
+                    <p
+                      className={`text-xs mt-1 ${
+                        isActive ? "text-orange-100" : "text-zinc-500"
+                      }`}
+                    >
+                      {item.role}
+                    </p>
+                  </button>
+
+                  {/* ACCORDION BODY */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="lg:hidden overflow-hidden px-5 pb-5"
+                      >
+                        <p className="text-sm leading-relaxed text-orange-50">
+                          “{item.quote}”
+                        </p>
+                        <p className="mt-3 text-xs text-orange-100">
+                          {item.role} • {item.location}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
 
-          {/* TESTIMONIAL DISPLAY */}
-          <div className="lg:col-span-2 order-1 lg:order-2">
-            <div className="relative bg-zinc-50 border border-zinc-200 rounded-lg p-8 md:p-12 shadow-lg">
+          {/* DESKTOP PANEL */}
+          <div className="lg:col-span-2 hidden lg:block">
+            <div className="relative bg-zinc-50 rounded-lg p-12 shadow-lg">
 
-              {/* Decorative Index */}
-              <div className="absolute top-6 right-6 text-6xl md:text-8xl font-black text-zinc-100 select-none pointer-events-none">
+              {/* <div className="absolute top-6 right-6 text-8xl font-black text-zinc-100">
                 0{activeIndex + 1}
-              </div>
+              </div> */}
 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -134,18 +180,16 @@ export default function TestimonialsAdvanced() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -24 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="relative z-10"
                 >
-                  <blockquote className="text-xl md:text-2xl lg:text-3xl font-bold text-zinc-900 leading-relaxed">
+                  <blockquote className="text-3xl font-bold leading-relaxed">
                     “{testimonials[activeIndex].quote}”
                   </blockquote>
 
                   <div className="mt-8">
-                    <p className="font-bold text-zinc-900">
+                    <p className="font-bold">
                       {testimonials[activeIndex].client}
                     </p>
-                    <p className="text-sm text-zinc-600 mt-1">
+                    <p className="text-sm text-zinc-600">
                       {testimonials[activeIndex].role} •{" "}
                       {testimonials[activeIndex].location}
                     </p>
@@ -153,32 +197,17 @@ export default function TestimonialsAdvanced() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* PROGRESS BAR */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-zinc-200 rounded-b-3xl overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-zinc-200">
                 <motion.div
                   key={activeIndex}
-                  initial={{ width: "0%" }}
+                  initial={{ width: 0 }}
                   animate={{ width: "100%" }}
-                  transition={{ duration: 8, ease: "linear" }}
+                  transition={{ duration: INTERVAL / 1000, ease: "linear" }}
                   className="h-full bg-orange-500"
                 />
               </div>
             </div>
           </div>
-        </div>
-
-        {/* DOT INDICATORS */}
-        <div className="flex justify-center mt-12 gap-3">
-          {testimonials.map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                scale: activeIndex === i ? 1.4 : 1,
-                backgroundColor: activeIndex === i ? "#f97316" : "#e5e7eb",
-              }}
-              className="w-2 h-2 rounded-full"
-            />
-          ))}
         </div>
       </div>
     </section>
