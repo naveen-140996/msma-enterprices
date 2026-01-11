@@ -222,7 +222,7 @@ export default function ServicesPage() {
             <SwiperSlide key={i}>
               <motion.div
                 whileHover={{ y: -8 }}
-                className="bg-white rounded-2xl p-8 shadow-lg border h-[180px]"
+                className="bg-white rounded-2xl p-8 shadow-lg border h-[200px] md:h-[180px]"
               >
                 <h3 className="text-xl font-bold mb-3">{s.title}</h3>
                 <p className="text-zinc-600 leading-relaxed">{s.desc}</p>
@@ -304,8 +304,6 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
-
-      {/* ================= CTA ================= */}
     </main>
     <FooterAlpha />
     </>
