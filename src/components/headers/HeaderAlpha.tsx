@@ -173,13 +173,13 @@ const softwareServices = [
               Portfolio
             </Link>
            
-               <Link href="/testimonials" className={navLinkClass("/testimonials")}>
+               <Link href="/testimonial" className={navLinkClass("/testimonial")}>
               Testimonials
             </Link>
-
+{/* 
             <Link href="/blogs" className={navLinkClass("/blogs")}>
               Blog
-            </Link>
+            </Link> */}
              <Link href="/about" className={navLinkClass("/about")}>
               About us
             </Link>
@@ -261,7 +261,7 @@ const softwareServices = [
               <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Services</Link>
               <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Portfolio</Link>
               <Link href="/Testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">Testimonials</Link>
-              <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Blog</Link>
+              {/* <Link href="/blogs" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7] pb-2">Blog</Link> */}
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-[16px] font-black uppercase tracking-tighter border-b border-[#c7c7c7]  pb-2">About</Link>
            </div>
         </div>

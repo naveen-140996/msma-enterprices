@@ -1,159 +1,186 @@
 "use client";
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+import { motion } from "framer-motion";
+import HeaderAlpha from "@/components/headers/HeaderAlpha";
+import FooterAlpha from "@/components/footers/FooterAlpha";
 
 export default function ContactPage() {
-  const [activeNode, setActiveNode] = useState('01');
-
   return (
-    <main className="min-h-screen bg-white pt-32 pb-16 selection:bg-orange-500 selection:text-white overflow-hidden">
-      
-      {/* 1. BACKGROUND GRID DETAIL (No Shadows, Pure Technical Lines) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8f8f8_1px,transparent_1px),linear-gradient(to_bottom,#f8f8f8_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
+    <>
+      <HeaderAlpha />
 
-      <div className="max-w-7xl mx-auto px-8 lg:px-16">
-        
-        {/* HEADER: Architectural Approach */}
-        <div className="grid lg:grid-cols-12 gap-8 items-end mb-24">
-          <div className="lg:col-span-8">
-            <motion.p 
-              initial={{ opacity: 0, y: 10 }}
+      <main className="bg-white text-zinc-900">
+
+        {/* ================= HERO ================= */}
+        <section className="relative bg-[#0b0d10] text-white pt-36 pb-24 overflow-hidden">
+          {/* Glass movement */}
+          <div className="absolute inset-0 -z-10 pointer-events-none">
+            <motion.div
+              animate={{ x: ["-30%", "30%", "-30%"] }}
+              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+              className="absolute top-0 left-0 w-[60%] h-full bg-white/10 blur-3xl"
+            />
+            <motion.div
+              animate={{ x: ["30%", "-30%", "30%"] }}
+              transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+              className="absolute bottom-0 right-0 w-[60%] h-full bg-white/5 blur-3xl"
+            />
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[10px] font-black uppercase tracking-[0.5em] text-orange-500 mb-6"
+              className="text-4xl md:text-6xl font-black"
             >
-              System_Inquiry_Terminal // v4.0
-            </motion.p>
-            <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.75] text-zinc-900">
-              Direct <br />
-              <span className="text-zinc-100">Interface.</span>
-            </h1>
-          </div>
-          <div className="lg:col-span-4 lg:text-right">
-             <div className="inline-block border-l-2 border-orange-500 pl-6 text-left">
-                <span className="block text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest">Awaiting Input</span>
-                <span className="block text-2xl font-black text-zinc-900 uppercase italic">Ready_To_Sync</span>
-             </div>
-          </div>
-        </div>
+              Let’s Build Something Impactful
+            </motion.h1>
 
-        <div className="grid lg:grid-cols-12 gap-20">
-          
-          {/* LEFT: INFORMATION ARCHITECTURE */}
-          <div className="lg:col-span-4 space-y-16">
-            
-            {/* Live Data Card */}
-            <div className="relative p-8 border border-zinc-100 bg-white group overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-zinc-50 -mr-8 -mt-8 rotate-45 border-b border-zinc-100" />
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-900 mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-orange-500" />
-                Connectivity_HUB
-              </h4>
-              <div className="space-y-6">
-                <div>
-                  <p className="text-[9px] font-mono font-bold text-zinc-400 uppercase">Secure_Mail</p>
-                  <p className="text-sm font-black text-zinc-900">HELLO@VIWEBSYNC.COM</p>
-                </div>
-                <div>
-                  <p className="text-[9px] font-mono font-bold text-zinc-400 uppercase">Operations_Base</p>
-                  <p className="text-sm font-black text-zinc-900">COIMBATORE, TN // IN</p>
-                </div>
+            <p className="mt-6 max-w-3xl mx-auto text-lg text-zinc-300">
+              Whether you’re planning a new product, scaling an existing platform,
+              or optimizing growth — our team is ready to help.
+            </p>
+          </div>
+        </section>
+
+        {/* ================= CONTACT SECTION ================= */}
+        <section className="md:py-32 py-10 bg-[#f7f7f7]">
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+
+            {/* LEFT – CONTACT INFO */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-black mb-6">
+                Talk With Our Experts
+              </h2>
+
+              <p className="text-zinc-600 max-w-xl leading-relaxed">
+                We collaborate with startups, enterprises, and growing businesses
+                to design, develop, and scale digital products.
+                Share your goals — we’ll guide you with clarity.
+              </p>
+
+              {/* INFO BLOCKS */}
+              <div className="mt-10 space-y-6">
+                <InfoItem
+                  title="Email Us"
+                  value="contact@yourcompany.com"
+                />
+                <InfoItem
+                  title="Call Us"
+                  value="+91 98765 43210"
+                />
+                <InfoItem
+                  title="Location"
+                  value="India • Remote Worldwide"
+                />
               </div>
-            </div>
 
-            {/* Availability Visualization */}
-            <div className="space-y-4">
-              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">Response_Bandwidth</span>
-              <div className="flex gap-1 h-8 items-end">
-                {[...Array(15)].map((_, i) => (
-                  <motion.div 
-                    key={i}
-                    animate={{ height: [10, 32, 10] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
-                    className={`w-1 flex-grow ${i < 12 ? 'bg-zinc-900' : 'bg-zinc-100'}`}
-                  />
-                ))}
-              </div>
-              <p className="text-[9px] font-mono text-zinc-400 uppercase tracking-widest">Current Status: High_Availability</p>
-            </div>
-          </div>
+              {/* TRUST POINTS */}
+              <ul className="mt-10 space-y-3 text-zinc-700 font-medium">
+                <li>✔ Clear project roadmap & timelines</li>
+                <li>✔ Transparent pricing & communication</li>
+                <li>✔ Enterprise-grade security & scalability</li>
+              </ul>
+            </motion.div>
 
-          {/* RIGHT: ADVANCED INTERFACE FORM */}
-          <div className="lg:col-span-8">
-            <div className="border-t-2 border-zinc-900 pt-12">
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                
-                {/* Inputs with floating labels logic */}
-                <div className="relative group">
-                  <span className="absolute -top-6 left-0 text-[9px] font-black uppercase tracking-widest text-zinc-300 group-focus-within:text-orange-500 transition-colors">ID_Identification</span>
-                  <input 
+            {/* RIGHT – CONTACT FORM */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl shadow-xl border p-8"
+            >
+              <h3 className="text-2xl font-bold mb-6">
+                Start a Conversation
+              </h3>
+
+              <form className="space-y-6">
+                <div>
+                  <label className="text-sm font-semibold">
+                    Full Name
+                  </label>
+                  <input
                     type="text"
-                    placeholder="FULL NAME"
-                    className="w-full bg-transparent border-b border-zinc-200 py-4 text-sm font-bold uppercase focus:outline-none focus:border-zinc-900 transition-all placeholder:text-zinc-200"
+                    placeholder="Your name"
+                    className="mt-2 w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-400"
                   />
                 </div>
 
-                <div className="relative group">
-                  <span className="absolute -top-6 left-0 text-[9px] font-black uppercase tracking-widest text-zinc-300 group-focus-within:text-orange-500 transition-colors">COM_Protocol</span>
-                  <input 
+                <div>
+                  <label className="text-sm font-semibold">
+                    Email Address
+                  </label>
+                  <input
                     type="email"
-                    placeholder="EMAIL ADDRESS"
-                    className="w-full bg-transparent border-b border-zinc-200 py-4 text-sm font-bold uppercase focus:outline-none focus:border-zinc-900 transition-all placeholder:text-zinc-200"
+                    placeholder="you@example.com"
+                    className="mt-2 w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-400"
                   />
                 </div>
 
-                <div className="md:col-span-2 relative group">
-                  <span className="absolute -top-6 left-0 text-[9px] font-black uppercase tracking-widest text-zinc-300 group-focus-within:text-orange-500 transition-colors">Service_Path</span>
-                  <div className="flex flex-wrap gap-3 mt-4">
-                    {['LabVIEW', 'Hardware', 'Aerospace', 'Other'].map((item) => (
-                      <button 
-                        key={item}
-                        type="button"
-                        onClick={() => setActiveNode(item)}
-                        className={`px-6 py-2 text-[10px] font-black uppercase tracking-widest border transition-all ${activeNode === item ? 'bg-zinc-900 text-white border-zinc-900' : 'border-zinc-100 text-zinc-400 hover:border-zinc-900'}`}
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
+                <div>
+                  <label className="text-sm font-semibold">
+                    Project Type
+                  </label>
+                  <select className="mt-2 w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-400">
+                    <option>E-Commerce Website</option>
+                    <option>Web Application</option>
+                    <option>Marketing & Growth</option>
+                    <option>AI Automation</option>
+                    <option>Consultation</option>
+                  </select>
                 </div>
 
-                <div className="md:col-span-2 relative group">
-                  <span className="absolute -top-6 left-0 text-[9px] font-black uppercase tracking-widest text-zinc-300 group-focus-within:text-orange-500 transition-colors">Manifest_Description</span>
-                  <textarea 
+                <div>
+                  <label className="text-sm font-semibold">
+                    Message
+                  </label>
+                  <textarea
                     rows={4}
-                    placeholder="BRIEF YOUR PROJECT REQUIREMENTS..."
-                    className="w-full bg-transparent border-b border-zinc-200 py-4 text-sm font-bold uppercase focus:outline-none focus:border-zinc-900 transition-all placeholder:text-zinc-200 resize-none"
+                    placeholder="Tell us about your project..."
+                    className="mt-2 w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-orange-400"
                   />
                 </div>
 
-                <div className="md:col-span-2 pt-8">
-                  <button className="group relative w-full md:w-auto px-20 py-6 bg-zinc-900 overflow-hidden">
-                    <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.6em] text-white">
-                      Initialize_Transmission
-                    </span>
-                    <div className="absolute inset-0 bg-orange-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  </button>
-                  <div className="mt-6 flex items-center gap-4">
-                    <div className="h-[1px] w-12 bg-zinc-100" />
-                    <p className="text-[8px] font-mono text-zinc-400 uppercase tracking-[0.3em]">
-                      All data processed via encrypted secure-tunnel
-                    </p>
-                  </div>
-                </div>
-
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-full bg-orange-500 text-white font-bold shadow-lg hover:scale-[1.02] transition"
+                >
+                  Send Message
+                </button>
               </form>
-            </div>
+            </motion.div>
+
           </div>
+        </section>
 
-        </div>
-      </div>
+        {/* ================= CTA ================= */}
+        <section className="py-24 bg-[#0b0d10] text-white text-center px-6">
+          <h2 className="text-4xl md:text-5xl font-black">
+            We Respond Within 24 Hours
+          </h2>
+          <p className="mt-6 max-w-2xl mx-auto text-zinc-300">
+            No sales pressure. Just clear insights and honest guidance.
+          </p>
+        </section>
 
-      {/* FOOTER DETAIL (Architectural Stamp) */}
-      <div className="mt-32 border-t border-zinc-50 pt-8 text-center px-8">
-         <p className="text-[10px] font-black uppercase tracking-[1em] text-zinc-200">
-           VIWEB SYNC // PRECISION INTEGRATION SYSTEMS
-         </p>
-      </div>
-    </main>
+      </main>
+
+      <FooterAlpha />
+    </>
+  );
+}
+
+/* ------------------ INFO ITEM ------------------ */
+
+function InfoItem({ title, value }: { title: string; value: string }) {
+  return (
+    <div>
+      <p className="text-sm text-zinc-400">{title}</p>
+      <p className="font-semibold text-lg">{value}</p>
+    </div>
   );
 }
